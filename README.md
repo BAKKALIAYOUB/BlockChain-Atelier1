@@ -56,6 +56,14 @@ print(f"Proof for tx1: {proof}")
 # Verify the proof
 is_valid = merkle_tree.verify_proof('tx1')
 print(f"Is the proof valid? {is_valid}")
+
+##############
+# Result
+##############
+
+# Root Hash: 773bc304a3b0a626a520a8d6eacc36809ac18c0b174f3ff3cdaf0a4e9c64433d
+# Proof for tx1: ['27ca64c092a959c7edc525ed45e845b1de6a7590d173fd2fad9133c8a779a1e3', '850cf301915d09ebcfa84e2ee4087025e17a6fca7e4149ce02cff94cd3db55de']
+# Is the proof valid? True
 ```
 
 ## EX2.PY
@@ -84,21 +92,62 @@ The script demonstrates how to create a blockchain, add blocks to it, and valida
 
 ### Example
 ```python
-# Example usage of EX2.PY
+from ex2 import Block
+import time
+
 previous_hash = "0000000000000000000000000000000000000000000000000000000000000000"
 
-difficulty = 5
-new_block = Block(data="Transaction data", previous_hash=previous_hash)
-        
-print(f"\nMining block with difficulty {difficulty}...")
-start_time = time.time()  # Start timing
+print("=====================================================================================================")
+# Test different difficulty levels
+for difficulty in range(1, 5):  # Change this range to test more difficulties
+    new_block = Block(data="Transaction data", previous_hash=previous_hash)
+    
+    print(f"\nMining block with difficulty {difficulty}...")
+    start_time = time.time()  # Start timing
+    
+    new_block.mine_block(difficulty)
+    
+    end_time = time.time()  # End timing
+    execution_time = end_time - start_time
+    
+    print(f"Final block hash: {new_block.hash}")
+    print(f"Nonce: {new_block.nonce}")
+    print(f"Time taken to mine block at difficulty {difficulty}: {execution_time:.2f} seconds")
+    print("=====================================================================================================")
+    
+##############
+# Output
+##############
 
-new_block.mine_block(difficulty)
+# =====================================================================================================
 
-end_time = time.time()  # End timing
-execution_time = end_time - start_time
+# Mining block with difficulty 1...
+# Block mined: 03ba4af7c4f5389de5f9598ab501435d38c8af0e5d0da00700c2dd8ac5763694
+# Final block hash: 03ba4af7c4f5389de5f9598ab501435d38c8af0e5d0da00700c2dd8ac5763694
+# Nonce: 15
+# Time taken to mine block at difficulty 1: 0.00 seconds
+# =====================================================================================================
 
-print(f"Final block hash: {new_block.hash}")
-print(f"Nonce: {new_block.nonce}")
-print(f"Time taken to mine block at difficulty {difficulty}: {execution_time:.2f} seconds")
+# Mining block with difficulty 2...
+# Block mined: 001338469f2754031a695023e22080a950a11fd83a4c3f1e0f63762533173b55
+# Final block hash: 001338469f2754031a695023e22080a950a11fd83a4c3f1e0f63762533173b55
+# Nonce: 213
+# Time taken to mine block at difficulty 2: 0.00 seconds
+# =====================================================================================================
+
+# Mining block with difficulty 3...
+# Block mined: 000655836611b2b3dd279469f5fa0dc4e8253af13ef69d38cbd9af609e15990c
+# Final block hash: 000655836611b2b3dd279469f5fa0dc4e8253af13ef69d38cbd9af609e15990c
+# Nonce: 12504
+# Time taken to mine block at difficulty 3: 0.08 seconds
+# =====================================================================================================
+
+# Mining block with difficulty 4...
+# Block mined: 00006d821813131dec823960c81060ea79566e38a507dc4b4a4c52e12ad620a7
+# Final block hash: 00006d821813131dec823960c81060ea79566e38a507dc4b4a4c52e12ad620a7
+# Nonce: 35014
+# Time taken to mine block at difficulty 4: 0.22 seconds
+# =====================================================================================================
 ```
+
+
