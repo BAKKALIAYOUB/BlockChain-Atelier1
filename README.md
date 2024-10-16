@@ -4,6 +4,11 @@ This repository contains two Python scripts, `EX1.PY` and `EX2.PY`, which demons
 
 ## EX1.PY
 
+### Concept
+A Merkle Tree is a data structure used in blockchain technology to efficiently and securely verify the integrity of large amounts of data. It ensures that data is valid without storing all of it, using hashes instead.
+
+In this script, a Merkle Tree is built from a list of transactions. Each transaction is hashed, forming the leaves of the tree. Pairs of nodes are combined to generate new hashes until a single root is obtained, known as the root hash. This root allows the verification of all transactions without requiring access to each one individually.
+
 ### Overview
 
 `EX1.PY` implements a Merkle Tree, a data structure used in blockchain technology to efficiently and securely verify the integrity of data. The script includes the following classes:
@@ -54,6 +59,11 @@ print(f"Is the proof valid? {is_valid}")
 ```
 
 ## EX2.PY
+
+### Concept
+Block mining is a fundamental process in decentralized blockchains like Bitcoin. It involves finding a nonce (an arbitrary number) which, when combined with the block data and hashed, produces a hash starting with a certain number of zeros, representing the difficulty level.
+
+In this script, a block is created with transaction data and a previous hash (the hash of the previous block). Mining the block involves trying different nonces until a valid hash is found that meets the difficulty level.
 
 ### Overview
 
